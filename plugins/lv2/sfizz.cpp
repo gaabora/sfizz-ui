@@ -336,6 +336,56 @@ connect_port_multi(LV2_Handle instance,
     case SFIZZ_MULTI_OUT8R:
         self->output_buffers[15] = (float *)data;
         break;
+
+    case SFIZZ_MULTI_OUT9L:
+        self->output_buffers[16] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT9R:
+        self->output_buffers[17] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT10L:
+        self->output_buffers[18] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT10R:
+        self->output_buffers[19] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT11L:
+        self->output_buffers[20] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT11R:
+        self->output_buffers[21] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT12L:
+        self->output_buffers[22] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT12R:
+        self->output_buffers[23] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT13L:
+        self->output_buffers[24] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT13R:
+        self->output_buffers[25] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT14L:
+        self->output_buffers[26] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT14R:
+        self->output_buffers[27] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT15L:
+        self->output_buffers[28] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT15R:
+        self->output_buffers[29] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT16L:
+        self->output_buffers[30] = (float *)data;
+        break;
+    case SFIZZ_MULTI_OUT16R:
+        self->output_buffers[31] = (float *)data;
+        break;
+
     case SFIZZ_MULTI_VOLUME:
         self->volume_port = (const float *)data;
         break;

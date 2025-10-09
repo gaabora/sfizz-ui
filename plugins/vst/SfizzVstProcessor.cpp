@@ -292,7 +292,7 @@ tresult PLUGIN_API SfizzVstProcessor::process(Vst::ProcessData& data)
         return kResultTrue;
 
     constexpr uint32 numChannels = 2;
-    constexpr uint32 maxChannels = 16;
+    constexpr uint32 maxChannels = 32;
     float* outputs[maxChannels];
     const auto numMonoChannels = data.numOutputs * numChannels;
 
@@ -967,9 +967,17 @@ tresult PLUGIN_API SfizzVstProcessorMulti::initialize(FUnknown* context)
         addAudioOutput(STR16("Audio Output 6"), Vst::SpeakerArr::kStereo);
         addAudioOutput(STR16("Audio Output 7"), Vst::SpeakerArr::kStereo);
         addAudioOutput(STR16("Audio Output 8"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 9"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 10"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 11"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 12"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 13"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 14"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 15"), Vst::SpeakerArr::kStereo);
+        addAudioOutput(STR16("Audio Output 16"), Vst::SpeakerArr::kStereo);
     }
     _multi = true;
-    _rmsFollower.setNumOutputs(16);
+    _rmsFollower.setNumOutputs(32);
     return res;
 }
 
