@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 10
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Install dependencies
@@ -41,11 +41,11 @@ jobs:
     runs-on: ubuntu-22.04 # abseil (libabsl) is not available in 20.04 repository
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Checkout lv2lint
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: sfztools/lv2lint
         path: lv2lint
@@ -150,7 +150,7 @@ jobs:
       if: ${{ github.ref_type == 'branch' }}
       run: brew install abseil
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Configure CMake
@@ -216,7 +216,7 @@ jobs:
         productbuild "${options[@]}"
     - name: Upload
       if: github.ref_type == 'tag' || github.event_name == 'pull_request'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: macOS package
         path: "${{ github.workspace }}/build/${{ env.install_name }}.pkg"
@@ -244,7 +244,7 @@ jobs:
       run: |
         echo "install_name: $env:install_name"
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Configure CMake
@@ -289,7 +289,7 @@ jobs:
       run: iscc /O"." /F"${{ env.install_name }}" /dARCH="${{ matrix.platform }}" innosetup.iss
     - name: Upload
       if: github.ref_type == 'tag' || github.event_name == 'pull_request'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.pkg_platform }} installer
         path: "${{ github.workspace }}/build/${{ env.install_name }}.exe"
@@ -302,7 +302,7 @@ jobs:
       install_name: sfizz-${{ github.ref_name }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Install dependencies
@@ -315,7 +315,7 @@ jobs:
           --prefix="${{ env.install_name }}/" \
           -9 "${{ github.workspace }}/${{ env.install_name }}.tar.gz"
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Source code tarball
         path: "${{ github.workspace }}/${{ env.install_name }}.tar.gz"
@@ -331,7 +331,7 @@ jobs:
       install_name: sfizz-${{ github.ref_name }}-moddevices
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: recursive
     - name: Fix up MOD environment
@@ -363,7 +363,7 @@ jobs:
           /usr/local/bin/cmake --build build --config ${{ env.build_type }} --target install
         tar czvf "${{ env.install_name }}".tar.gz "${{ env.install_name }}"
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: MOD devices tarball
         path: "${{ runner.workspace }}/${{ env.install_name }}.tar.gz"
@@ -378,28 +378,28 @@ jobs:
       - archive_source_code
     steps:
       - name: macOS download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: macOS package
 
       - name: Windows 32 download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Win32 installer
 
       - name: Windows 64 download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Win64 installer
 
       - name: Source code download
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: Source code tarball
 
       - name: MOD download
         if: ${{ false }} # DISABLED: See comment above
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: MOD devices tarball
 
